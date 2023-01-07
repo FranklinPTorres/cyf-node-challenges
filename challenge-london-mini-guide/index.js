@@ -1,12 +1,31 @@
 const express = require ('express');
 const cors = require ('cors');
+const stratford = require('./data/Stratford.json')
+const heathrow = require('./data/Heathrow.json')
+const harrow = require('./data/Harrow.json')
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
 app.get('/', (req, res) =>{
-    res.send(`This port is working`)
+    res.send(routes)
+});
+
+app.get("/pharmacies", (req, res) => {
+  res.send(stratford.pharmacies);
+});
+
+app.get("/colleges", (req, res) => {
+  res.send(stratford.colleges);
+});
+
+app.get("/doctors", (req, res) => {
+  res.send(stratford.doctors);
+});
+
+app.get("/hospitals", (req, res) => {
+  res.send(stratford.hospitals);
 });
 
 const routes = {
